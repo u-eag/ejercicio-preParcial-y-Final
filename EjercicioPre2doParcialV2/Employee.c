@@ -263,3 +263,29 @@ int employee_setSueldoInt(Employee* this,int value)
 
     return retorno;
 }
+
+int employee_reduceBySalary(void* pEmpleado)
+{
+    int retorno = 0;
+    Employee* pEmpleadoAux = pEmpleado;
+
+    if(pEmpleadoAux->sueldo > 50000) // limite de ganancias
+    {
+        retorno = 1; // los sueldos que no pagan ganancias se borran de la lista
+    }
+
+    return retorno;
+}
+
+int employee_filterBySalary(void* pEmpleado)
+{
+    int retorno = -1;
+    Employee* pEmpleadoAux = pEmpleado;
+
+    if(pEmpleadoAux->sueldo < 20000)
+    {
+        retorno = 0; // los sueldos que ganan más de 20.000 se borran de la lista
+    }
+
+    return retorno;
+}

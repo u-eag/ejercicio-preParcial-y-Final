@@ -28,3 +28,6 @@ int employee_setSueldo(Employee* this,char* value);
 int employee_getSueldo(Employee* this,int* value);
 
 int em_calcularSueldo(void* pEmpleado);
+
+int employee_reduceBySalary(void* pEmpleado); // pFunc criterio para pasarle a ll_reduce
+int employee_filterBySalary(void* pEmpleado); // pFunc criterio para pasarle a ll_filter

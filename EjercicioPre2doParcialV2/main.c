@@ -28,6 +28,7 @@ int main()
 {
     // Definir lista de empleados
     LinkedList* listaEmpleados = ll_newLinkedList(); // Crear lista empledos
+    LinkedList* listaFiltrada = ll_newLinkedList(); // crea la lista para ll_filter
 
     // Leer empleados de archivo data.csv
     if(parser_parseEmpleados("data.csv",listaEmpleados)==1)
@@ -35,6 +36,15 @@ int main()
         // Calcular sueldos
         printf("Calculando sueldos de empleados\n");
         ll_map(listaEmpleados,em_calcularSueldo);
+
+        // Pruebo la función ll_filter
+        printf("Quitando empleados que ganan +20.000\n");
+        listaFiltrada = ll_filter(listaEmpleados, employee_filterBySalary);
+        generarArchivoSueldos("filter.csv", listaFiltrada);
+
+        // Pruebo la función ll_reduce
+        printf("Quitando empleados con sueldos que no pagan ganancias\n");
+        ll_reduce(listaEmpleados, employee_reduceBySalary);
 
         // Generar archivo de salida
         if(generarArchivoSueldos("sueldos.csv",listaEmpleados)==1)
