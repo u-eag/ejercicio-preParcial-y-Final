@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "Empleado.h"
+#include "Employee.h"
 #include "LinkedList.h" // acá va mi linkedlist
 #include "Parser.h"
 
@@ -47,11 +47,36 @@ int main()
     else
         printf("Error leyando empleados\n");
 
-
     return 0;
 }
 
 int generarArchivoSueldos(char* fileName,LinkedList* listaEmpleados)
 {
-    return 1;
+    int retorno = -1;
+    Employee* pEmployee;
+    int i;
+
+    FILE* pFile = fopen(fileName,"w+");
+
+    if(listaEmpleados != NULL && pFile != NULL)
+    {
+        fprintf(pFile, "id,nombre,horasTrabajadas,sueldo\n");
+
+        for (i=0;i<ll_len(listaEmpleados);i++)
+        {
+            pEmployee = ll_get(listaEmpleados, i);
+
+            if(pEmployee != NULL)
+            {
+                fprintf (pFile,"%d,%s,%d,%d\n", pEmployee->id, pEmployee->nombre,
+                                                pEmployee->horasTrabajadas, pEmployee->sueldo);
+            }
+        }
+
+        fclose(pFile);
+
+        retorno = 1;
+    }
+
+    return retorno;
 }

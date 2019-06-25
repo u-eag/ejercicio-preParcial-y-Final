@@ -200,7 +200,8 @@ int employee_findFree(Employee* arrayEmployee[], int lenEmployee)
 
 int em_calcularSueldo(void* pEmpleado)
 {
-    int retorno = -1; // es el sueldo
+    int retorno = -1;
+    int sueldo;
     Employee* pEmpleadoAux = pEmpleado;
     int horasTrabajadas;
     int horasAcumuladas;
@@ -214,7 +215,11 @@ int em_calcularSueldo(void* pEmpleado)
 
     if(horasTrabajadas <= 120)
     {
-        retorno = horasTrabajadas * 180;
+        sueldo = horasTrabajadas * 180;
+        if(!employee_setSueldoInt(pEmpleadoAux, sueldo))
+        {
+            retorno = 1;
+        }
     }
     else if(horasTrabajadas <=160)
     {
@@ -222,7 +227,12 @@ int em_calcularSueldo(void* pEmpleado)
 
         horasTrabajadas = horasTrabajadas - 120;
 
-        retorno = horasAcumuladas + horasTrabajadas * 240;
+        sueldo = horasAcumuladas + horasTrabajadas * 240;
+
+        if(!employee_setSueldoInt(pEmpleadoAux, sueldo))
+        {
+            retorno = 1;
+        }
     }
     else if(horasTrabajadas <= 240)
     {
@@ -230,7 +240,25 @@ int em_calcularSueldo(void* pEmpleado)
 
         horasTrabajadas = horasTrabajadas - 160;
 
-        retorno = horasAcumuladas + horasTrabajadas * 350;
+        sueldo = horasAcumuladas + horasTrabajadas * 350;
+
+        if(!employee_setSueldoInt(pEmpleadoAux, sueldo))
+        {
+            retorno = 1;
+        }
+    }
+
+    return retorno;
+}
+
+int employee_setSueldoInt(Employee* this,int value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value > 0)
+    {
+        this->sueldo = value;
+        retorno = 0;
     }
 
     return retorno;

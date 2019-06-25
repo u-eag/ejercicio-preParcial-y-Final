@@ -23,6 +23,7 @@ int employee_getNombre(Employee* this,char* value);
 int employee_setHorasTrabajadas(Employee* this,char* value);
 int employee_getHorasTrabajadas(Employee* this,int* value);
 
+int employee_setSueldoInt(Employee* this,int value); // para pasarle el sueldo calculado desde em_calcularSueldo
 int employee_setSueldo(Employee* this,char* value);
 int employee_getSueldo(Employee* this,int* value);
 
