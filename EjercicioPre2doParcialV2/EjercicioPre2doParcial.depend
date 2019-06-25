@@ -1,0 +1,90 @@
+# depslib dependency file v1.0
+1560990921 source:d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\empleado.c
+	"Empleado.h"
+
+1560990889 d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\empleado.h
+
+1560990515 source:d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1560989323 d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\linkedlist.h
+
+1560991361 source:d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"Parser.h"
+
+1560990538 d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\parser.h
+	"LinkedList.h"
+
+1560990591 source:d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\parser.c
+	"LinkedList.h"
+
+1560918576 source:d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"validaciones.h"
+
+1560918576 d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\employee.h
+
+1560918576 d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\validaciones.h
+
+1560918576 source:d:\tp 4__\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+
+1560993796 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\empleado.c
+	"Empleado.h"
+
+1560993796 c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\empleado.h
+
+1560993796 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"LinkedList.h"
+	"Parser.h"
+
+1560993796 c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\linkedlist.h
+
+1560993796 c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\parser.h
+	"LinkedList.h"
+
+1560993796 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561428243 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1560993796 c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\employee.h
+
+1560993796 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+
+1560993796 c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\validaciones.h
+
+1561429982 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\ejerciciopre2doparcialv2\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"validaciones.h"
+
