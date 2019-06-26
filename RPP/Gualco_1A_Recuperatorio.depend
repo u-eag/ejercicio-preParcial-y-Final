@@ -1,0 +1,99 @@
+# depslib dependency file v1.0
+1561543092 source:c:\users\admiral\documents\gualco_1a_recuperatorio\abm_biblioteca.c
+	"ABM_Biblioteca.h"
+
+1560993796 c:\users\admiral\documents\gualco_1a_recuperatorio\abm_biblioteca.h
+
+1561552784 source:c:\users\admiral\documents\gualco_1a_recuperatorio\autores.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Autores.h"
+	"Fecha.h"
+	"Libros.h"
+	"Prestamos.h"
+	"Socios.h"
+	"validaciones.h"
+
+1561552681 c:\users\admiral\documents\gualco_1a_recuperatorio\autores.h
+
+1561545644 c:\users\admiral\documents\gualco_1a_recuperatorio\fecha.h
+
+1561532285 c:\users\admiral\documents\gualco_1a_recuperatorio\libros.h
+
+1561532285 c:\users\admiral\documents\gualco_1a_recuperatorio\prestamos.h
+	"Fecha.h"
+	"Socios.h"
+	"Libros.h"
+
+1561532285 c:\users\admiral\documents\gualco_1a_recuperatorio\socios.h
+	"Fecha.h"
+
+1561552033 c:\users\admiral\documents\gualco_1a_recuperatorio\validaciones.h
+
+1561543230 source:c:\users\admiral\documents\gualco_1a_recuperatorio\libros.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Autores.h"
+	"Fecha.h"
+	"Libros.h"
+	"Prestamos.h"
+	"Socios.h"
+	"validaciones.h"
+
+1561544452 source:c:\users\admiral\documents\gualco_1a_recuperatorio\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Autores.h"
+	"Fecha.h"
+	"Libros.h"
+	"Prestamos.h"
+	"Socios.h"
+	"validaciones.h"
+
+1561545597 source:c:\users\admiral\documents\gualco_1a_recuperatorio\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Autores.h"
+	"Fecha.h"
+	"Libros.h"
+	"Prestamos.h"
+	"Socios.h"
+	"validaciones.h"
+
+1561551952 source:c:\users\admiral\documents\gualco_1a_recuperatorio\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Autores.h"
+	"Fecha.h"
+	"Libros.h"
+	"Prestamos.h"
+	"Socios.h"
+	"validaciones.h"
+
+1561550918 source:c:\users\admiral\documents\gualco_1a_recuperatorio\prestamos.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Autores.h"
+	"Fecha.h"
+	"Libros.h"
+	"Prestamos.h"
+	"Socios.h"
+	"validaciones.h"
+
+1561552633 source:c:\users\admiral\documents\gualco_1a_recuperatorio\socios.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Autores.h"
+	"Fecha.h"
+	"Libros.h"
+	"Prestamos.h"
+	"Socios.h"
+	"validaciones.h"
+
