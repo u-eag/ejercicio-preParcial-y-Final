@@ -39,6 +39,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="Fecha.h" />
+		<Unit filename="InformarListar.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="InformarListar.h" />
 		<Unit filename="Libros.c">
 			<Option compilerVar="CC" />
 		</Unit>

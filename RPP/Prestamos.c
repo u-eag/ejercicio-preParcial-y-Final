@@ -7,6 +7,14 @@
 #include "Prestamos.h"
 #include "Socios.h"
 #include "validaciones.h"
+#include "InformarListar.h"
+
+static int idPrestamoAutomatico = 0;
+
+int generarIdPrestamo (void)
+{
+    return idPrestamoAutomatico++;
+}
 
 int initPrestamos(Prestamos* list, int len)
 {
@@ -50,7 +58,7 @@ int altaPrestamos(Prestamos* listPrestamos, int lenPrestamos, Libros* listLibros
     int flagIndex=0; // para saber si se encontró un índice libre
     Prestamos aux; // para guardar los datos ingresados
     int idLibroBuscado;
-    int idSocioBuscado;
+    //int idSocioBuscado;
 
     // primero busco un lugar libre:
     if((findEmptyIndexPrestamos(listPrestamos, lenPrestamos, &emptyIndex))==0)
@@ -65,32 +73,23 @@ int altaPrestamos(Prestamos* listPrestamos, int lenPrestamos, Libros* listLibros
     // si encuentro un lugar libre pido los datos
     if(flagIndex && listPrestamos!=NULL && lenPrestamos>0)
     {
-        if(buscarLibros(listLibros, 10, &idLibroBuscado)==0)
+        if( !buscarLibros(listLibros, 10, &idLibroBuscado)
+            && !getIntInRange(&aux.fechaPrestamo.dia, "\nIngrese dia de prestamo[1-31]: ", "\nIngreso invalido", 1, 31, 2) // fechaPrestamo.dia
+            && !getIntInRange(&aux.fechaPrestamo.mes, "\nIngrese mes de prestamo [1-12]: ", "\nIngreso invalido", 1, 12, 2) // fechaPrestamo.mes
+            && !getIntInRange(&aux.fechaPrestamo.anio, "\nIngrese anio de prestamo: ", "\nIngreso invalido", 1810, 2019,  2)) // fechaPrestamo.anio
         {
-            if(buscarSocios(listSocios, lenSocios, &idSocioBuscado)==0)
-            {
-                if(getStringNumerosInt(&aux.fechaPrestamo.dia, "\nIngrese dia de prestamo[1-31]: ", "\nIngreso invalido", 2) == 0) // fechaPrestamo.dia
-                {
-                    if(getStringNumerosInt(&aux.fechaPrestamo.mes, "\nIngrese mes de prestamo [1-12]: ", "\nIngreso invalido", 2) == 0) // fechaPrestamo.mes
-                    {
-                        if(getStringNumerosInt(&aux.fechaPrestamo.anio, "\nIngrese anio de prestamo: ", "\nIngreso invalido",  2) == 0) // fechaPrestamo.anio
-                        {
-                            // campo isEmpty
-                            aux.isEmpty=0; // ya no está más vacío
+            // campo isEmpty
+            aux.isEmpty=0; // ya no está más vacío
 
-                            // idPrestamos
-                            aux.idPrestamos=emptyIndex;
+            // idPrestamos
+            aux.idPrestamos = generarIdPrestamo();
 
-                            // si está todo bien, asigno los datos:
-                            listPrestamos[emptyIndex]=aux;
+            // si está todo bien, asigno los datos:
+            listPrestamos[emptyIndex]=aux;
 
-                            result=0;
+            result=0;
 
-                            printf("\nPrestamo ingresado exitosamente\n\n");
-                        }
-                    }
-                }
-            }
+            printf("\nPrestamo ingresado exitosamente\n\n");
         }
     }
 
@@ -109,7 +108,7 @@ int printPrestamos(Prestamos* listPrestamos, int lenPrestamos, Libros* listLibro
         if(listPrestamos[i].isEmpty==0)
         {
 
-            printf("\t%d \t%d \t%d/%d/%d \n\n", listLibros[i].idLibros, listSocios[i].idSocios,
+            printf("\t%d       \t%d         \t%d/%d/%d \n\n", listLibros[i].idLibros, listSocios[i].idSocios,
                    listPrestamos[i].fechaPrestamo.dia, listPrestamos[i].fechaPrestamo.mes, listPrestamos[i].fechaPrestamo.anio);
         }
     }

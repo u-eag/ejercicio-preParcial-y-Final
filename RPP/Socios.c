@@ -7,6 +7,14 @@
 #include "Prestamos.h"
 #include "Socios.h"
 #include "validaciones.h"
+#include "InformarListar.h"
+
+static int idSocioAutomatico = 0;
+
+int generarIdSocio (void)
+{
+    return idSocioAutomatico++;
+}
 
 /** \brief Inicializa el array de Socios
  *         seteando el campo isEmpty en 1
@@ -129,38 +137,40 @@ int altaSocios(Socios* list, int len)
     // si encuentro un lugar libre pido los datos
     if(flagIndex && list!=NULL && len>0)
     {
-        getStringLetras(aux.nombre, "\nIngrese el nombre: \n", "\nIngreso invalido\n", 2); // nombre[31]
-        getStringLetras(aux.apellido, "\nIngrese el apellido: \n", "\nIngreso invalido\n", 2); // apellido[31]
-        getSexo(&aux.sexo, "\nIngrese el sexo[F][M]: \n", "\nIngreso invalido\n", 2); // sexo[F][M]
-        getTelephone(aux.telefono, "\nIngrese el telefono: \n", "Ingreso invalido\n", 2); // telefono[16]
-        getMail(aux.mail, "\nIngrese el eMail: ", "\nIngreso invalido", 2); // mail[31]
-        // getInt(&aux.fechaAsociado.dia, "\nIngrese dia de asociacion: ", "\nIngreso invalido", 2); // fechaAsociado.dia
-        // getInt(&aux.fechaAsociado.mes, "\nIngrese mes de asociacion [1-12]: ", "\nIngreso invalido", 2); // fechaAsociado.mes
-        // getInt(&aux.fechaAsociado.anio, "\nIngrese anio de asociacion: ", "\nIngreso invalido", 2); // fechaAsociado.anio
-                                    {
-                                        // campo isEmpty
-                                        aux.isEmpty=0; // ya no está más vacío
+        if( !getStringLetras(aux.nombre, "\nIngrese el nombre: \n", "\nIngreso invalido\n", 2) // nombre[31]
+            && !getStringLetras(aux.apellido, "\nIngrese el apellido: \n", "\nIngreso invalido\n", 2) // apellido[31]
+            && !getSexo(&aux.sexo, "\nIngrese el sexo[F][M]: \n", "\nIngreso invalido\n", 2) // sexo[F][M]
+            && !getTelephone(aux.telefono, "\nIngrese el telefono [011-4XXXXXX]: \n", "Ingreso invalido\n", 2) // telefono[16]
+            && !getString(aux.mail, "\nIngrese el eMail: ", "\nIngreso invalido") // mail[31]
+            && !getIntInRange(&aux.fechaAsociado.dia, "\nIngrese la fecha de registro\nDia: ", "\nIngreso invalido. Reingrese dia: ", 1, 31, 2) // dia
+            && !getIntInRange(&aux.fechaAsociado.mes, "\nMes: ", "\nIngreso invalido. Reingrese mes: ", 1, 12, 2) // mes
+            && !getIntInRange(&aux.fechaAsociado.anio, "\nAnio: ", "\nIngreso invalido. Reingrese anio: ", 1810, 2019, 2)); // anio
+        {
+            // idSocios
+            aux.idSocios = generarIdSocio();
 
-                                        // idSocios
-                                        aux.idSocios=emptyIndex;
+            // campo isEmpty
+            aux.isEmpty = 0; // ya no está más vacío
 
-                                        // si está todo bien, asigno los datos:
-                                        list[emptyIndex]=aux;
+            // si está todo bien, asigno los datos:
+            list[emptyIndex]=aux;
 
-                                        result=0;
+            result=0;
 
-                                        printf("\nAlta ingresada exitosamente\n\n");
-                                    }
+            printf("\nAlta ingresada exitosamente\n\n");
+        }
     }
 
     return result;
 }
 
-/** \brief
+/** \brief Busca un socio a partir del id
  *
- * \param
- * \param
- * \return
+ * \param list es el array de socios
+ * \param len es la cantidad de socios
+ * \param input Se carga el indice del socio buscado
+ * \return int Devuelve [-1] si hay error
+ *                      [0] si está todo ok
  *
  */
 int buscarSocios(Socios* list, int len, int* input)
@@ -169,8 +179,7 @@ int buscarSocios(Socios* list, int len, int* input)
     int idSocioBuscado;
     int i;
 
-    printf("\nIngrese el id del socio: ");
-    scanf("%d", &idSocioBuscado);
+    getIntInRange(&idSocioBuscado, "\nIngrese el id del socio: ", "\nIngreso invalido\n\n", 0, len, 2);
 
     for(i=0;i<len;i++)
     {
@@ -185,11 +194,12 @@ int buscarSocios(Socios* list, int len, int* input)
     return result;
 }
 
-/** \brief
+/** \brief Realiza la baja lógica de un socio
  *
- * \param
- * \param
- * \return
+ * \param list es el array de socios
+ * \param len es la cantidad de socios
+ * \return int Devuelve [-1] si hay error
+ *                      [0] si está todo ok
  *
  */
 int bajaSocios(Socios* list, int len)
@@ -197,12 +207,11 @@ int bajaSocios(Socios* list, int len)
     int result=-1;
     int idSocioBaja;
 
-    if(buscarSocios(list, len, &idSocioBaja) == 0)
+    if(!buscarSocios(list, len, &idSocioBaja))
     {
-        list[idSocioBaja].isEmpty=1;
+        list[idSocioBaja].isEmpty=1; // baja lógica
         result = 0;
         printf("\nSe dio de baja a %s %s\n\n", list[idSocioBaja].nombre, list[idSocioBaja].apellido);
-
     }
     else
     {
@@ -212,11 +221,12 @@ int bajaSocios(Socios* list, int len)
     return result;
 }
 
-/** \brief
+/** \brief Ordena los socios por apellido
  *
- * \param
- * \param
- * \return
+ * \param list es el array de socios
+ * \param len es la cantidad de socios
+ * \return int Devuelve [-1] si hay error
+ *                      [0] si está todo ok
  *
  */
 int ordenarSocios(Socios* list, int len)
@@ -243,11 +253,12 @@ int ordenarSocios(Socios* list, int len)
     return result;
 }
 
-/** \brief
+/** \brief Muestra un menú para editar socio
  *
- * \param
- * \param
- * \return
+ * \param list es el array de socios
+ * \param len es la cantidad de socios
+ * \return int Devuelve [-1] si hay error
+ *                      [0] si está todo ok
  *
  */
 int modificarSocios(Socios* list, int len)
@@ -259,6 +270,7 @@ int modificarSocios(Socios* list, int len)
     if(buscarSocios(list, len, &idSocioBuscado)==0)
     {
         result=0;
+
         do{
             system("cls");
 

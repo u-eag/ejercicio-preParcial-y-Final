@@ -7,6 +7,7 @@
 #include "Prestamos.h"
 #include "Socios.h"
 #include "validaciones.h"
+#include "InformarListar.h"
 
 int initLibros(Libros* list, int len)
 {

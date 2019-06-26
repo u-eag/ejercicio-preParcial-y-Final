@@ -17,12 +17,21 @@ int isMail(char* pStr);
 int getFecha (int* dia,int* mes,int* anio,char* msgE,int reintentos);
 int isFecha(int dia,int mes,int anio);
 
-
-
+int getIntInRange (int *pNum,char *msg,char *msgE,int minimo,int maximo,int reintentos);
 int getInt (int *pNum, char* msg, char* msgE);
 int getFloat (float *pNum, char* msg, char* msgE);
 
-int getIntInRange (int *pNum,char *msg,char *msgE,int minimo,int maximo,int reintentos);
+int getStringNumerosInt (char* pStr, char* msg, char* msgE,int reintentos);
+int getStringNumerosFloat (char* pStr, char* msg, char* msgE,int reintentos);
+int getStringAlphanumeric (char* pStr, char* msg, char* msgE,int reintentos);
+
+int isNumberInt (char* pStr);
+int isNumberFloat (char* pStr);
+int isAlphanumeric (char* pStr);
+
+
+
+
 int cargarArraySecuencialInt(int* pArray,int len,char* msg, char* msgE);
 int cargarArraySecuencialFloat(float* pArray,int len,char* msg, char* msgE);
 
@@ -40,8 +49,5 @@ int ordenarArrayMayorMenor (char* pArray, int len,int limit);
 int showArrayInt(int* pArray,int len);
 int showArrayChar(char* pArray,int len);
 
-int isNumberInt (char* pStr);
-int isNumberFloat (char* pStr);
-int isAlphanumeric (char* pStr);
 int isDni (char* pStr);
 int isCuit (char* pStr);

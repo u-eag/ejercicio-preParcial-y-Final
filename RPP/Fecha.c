@@ -7,4 +7,5 @@
 #include "Prestamos.h"
 #include "Socios.h"
 #include "validaciones.h"
+#include "InformarListar.h"
 

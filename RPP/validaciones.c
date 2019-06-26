@@ -7,6 +7,7 @@
 #include "Prestamos.h"
 #include "Socios.h"
 #include "validaciones.h"
+#include "InformarListar.h"
 
 /**
 * \brief Solicita un caracter al usuario y lo valida
@@ -79,6 +80,7 @@ int getStringLetras (char* pStr, char* msg, char* msgE, int reintentos)
 
     while(ret == -1 && reintentos > 0)
     {
+        fflush(stdin);
         if(!getString(bufferStr, msg, msgE) && (pStr!=NULL) && (isLetter(bufferStr)))
         {
             strncpy(pStr, bufferStr, 20);
@@ -128,14 +130,14 @@ int getString(char* pStr, char* msg, char*msgE)
  */
 int isLetter (char* pStr)
 {
-    int result = 0;
+    int result = -1;
     int i = 0;
 
     while(pStr[i] != '\0')
     {
         if((pStr[i] != ' ') && (pStr[i]<'a' || pStr[i]>'z') && (pStr[i]<'A' || pStr[i]>'Z'))
         {
-            result = -1;
+            result = 0;
         }
 
         i++;
@@ -192,7 +194,216 @@ int isSexo (char* pStr)
     return ret;
 }
 
+/** \brief Obtiene un array de string
+* \param array de string (validado con telefono)
+* \param algun mensaje que se quiera expresar
+* \param msgE mensajes de error de las funciones
+* \param cantidad de reintentos antes de fallar
+* \return retorna 0 diciendo que no hay error o -1 si lo hay
+*/
+int getTelephone (char* pStr, char* msg, char* msgE,int reintentos)
+{
+    char bufferStr[20];
+    int ret=-1;
+    while(ret==-1 && reintentos>0)
+    {
+        if(!getString(bufferStr,msg,msgE)&&(pStr!=NULL)&&(isTelephone(bufferStr)))
+        {
+            strncpy(pStr,bufferStr,20);
+            ret=0;
+        }
+        else
+        {
+            printf("%s",msgE);
+            reintentos--;
+        }
+    }
+    return ret;
+}
 
+/** \brief Valida telefono
+* \param array de char
+* \return retorna 1 diciendo que no hay error
+*/
+int isTelephone (char* pStr)
+{
+    int i=0;
+    int contadorGuion=0;
+    while(pStr[i]!='\0')
+    {
+        if((pStr[i]!=' ')&&(pStr[i]!='-')&&(pStr[i]<'0' || pStr[i]>'9'))
+        {
+            return 0;
+        }
+        if(pStr[i]=='-')
+        {
+            contadorGuion++;
+        }
+        i++;
+    }
+    if(contadorGuion==1)
+    {
+        return 1;
+    }
+    return 0;
+}
+
+/** \brief Obtiene un array de string
+* \param array de string
+* \param algun mensaje que se quiera expresar
+* \param msgE mensajes de error de las funciones
+* \param cantidad de reintentos antes de fallar
+* \return retorna 0 diciendo que no hay error o -1 si lo hay
+*/
+int getMail (char* pStr, char* msg, char* msgE,int reintentos)
+{
+    char bufferStr[20];
+    int ret = -1;
+    while(ret == -1 && reintentos > 0)
+    {
+        if(!getString(bufferStr,msg,msgE)&&(pStr!=NULL)&&(isMail(bufferStr)))
+        {
+            strncpy(pStr,bufferStr,20);
+            ret = 0;
+        }
+        else
+        {
+            printf("%s",msgE);
+            reintentos--;
+        }
+    }
+    return ret;
+}
+
+/** \brief Valida mail
+* \param array de char
+* \return retorna 0 diciendo que no hay error
+*/
+int isMail(char* pStr)
+{
+    int i;
+    int contadorArroba = 0;
+    int ret = -1;
+
+    while(pStr[i] != '\0')
+    {
+        if((pStr[i] != '.') && (pStr[i] != '-') && (pStr[i] != '_') &&
+                (pStr[i] < '0' || pStr[i] > '9') && (pStr[i] < 'a' || pStr[i] > 'z') && (pStr[i] < 'A' || pStr[i] > 'Z'))
+        {
+            return ret;
+        }
+        if(pStr[0] == '.' || pStr[i-1] == '.')
+        {
+            return ret;
+        }
+        if(pStr[i] == '@')
+        {
+            contadorArroba++;
+        }
+        i++;
+    }
+    if(contadorArroba == 1)
+    {
+        ret = 0;
+    }
+    return ret;
+}
+
+/** \brief Obtiene un array de string
+* \param puntero entero
+* \param puntero entero
+* \param puntero entero
+* \param msgE mensajes de error de las funciones
+* \param cantidad de reintentos antes de fallar
+* \return retorna 0 diciendo que no hay error o -1 si lo hay
+*/
+int getFecha (int* dia,int* mes,int* anio,char* msgE,int reintentos)
+{
+    int auxiliarDia;
+    int auxiliarMes;
+    int auxiliarAnio;
+    int ret = -1;
+
+    if(dia != NULL && mes != NULL && anio != NULL && reintentos > 0)
+    {
+        while(ret == -1)
+        {
+            fflush(stdin);
+            if((getInt(&auxiliarDia,"Ingrese dia: ",msgE)==0)&&
+                    (getInt(&auxiliarMes,"Ingrese mes: ",msgE)==0)&&
+                    (getInt(&auxiliarAnio,"Ingrese anio: ",msgE)==0)&&
+                    (isFecha(auxiliarDia,auxiliarMes,auxiliarAnio)))
+            {
+                *dia = auxiliarDia;
+                *mes = auxiliarMes;
+                *anio = auxiliarAnio;
+                ret = 0;
+            }
+            else
+            {
+                printf(msgE);
+                ret = -1;
+                reintentos--;
+            }
+        }
+    }
+    return ret;
+}
+
+/** \brief Valida fecha
+* \param variable entera
+* \param variable entera
+* \param variable entera
+* \return retorna 1 diciendo que no hay error
+*/
+int isFecha(int dia,int mes,int anio)
+{
+    int ret = 0;
+
+    if((anio < 1900 || anio > 2030) &&
+            (mes < 1 || mes > 12) &&
+            (dia < 1 || dia > 31))
+    {
+        ret = 0;
+    }
+    switch(mes)
+    {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+    {
+        if(dia < 1 || dia > 31)
+        {
+            ret = 1;
+        }
+        break;
+    }
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+    {
+        if(dia < 1 || dia > 30)
+        {
+            ret = 1;
+        }
+        break;
+    }
+    case 2:
+    {
+        if(dia < 1 || dia > 29)
+        {
+            ret = 1;
+        }
+        break;
+    }
+    }
+    return ret;
+}
 
 
 
@@ -265,6 +476,7 @@ int getIntInRange(  int *pNum,
     if( pNum != NULL &&
             reintentos >= 0)
     {
+        fflush(stdin);
         if(!getString(bufferStr,msg,msgE) &&
                 isNumberInt(bufferStr))
         {
@@ -393,32 +605,6 @@ int getStringAlphanumeric (char* pStr, char* msg, char* msgE,int reintentos)
     while(ret==-1 && reintentos>0)
     {
         if(!getString(bufferStr,msg,msgE)&&(pStr!=NULL)&&(isAlphanumeric(bufferStr)))
-        {
-            strncpy(pStr,bufferStr,20);
-            ret=0;
-        }
-        else
-        {
-            printf("%s",msgE);
-            reintentos--;
-        }
-    }
-    return ret;
-}
-/** \brief Obtiene un array de string
-* \param array de string (validado con telefono)
-* \param algun mensaje que se quiera expresar
-* \param msgE mensajes de error de las funciones
-* \param cantidad de reintentos antes de fallar
-* \return retorna 0 diciendo que no hay error o -1 si lo hay
-*/
-int getTelephone (char* pStr, char* msg, char* msgE,int reintentos)
-{
-    char bufferStr[20];
-    int ret=-1;
-    while(ret==-1 && reintentos>0)
-    {
-        if(!getString(bufferStr,msg,msgE)&&(pStr!=NULL)&&(isTelephone(bufferStr)))
         {
             strncpy(pStr,bufferStr,20);
             ret=0;
@@ -644,32 +830,7 @@ int isAlphanumeric (char* pStr)
     }
     return 1;
 }
-/** \brief Valida telefono
-* \param array de char
-* \return retorna 1 diciendo que no hay error
-*/
-int isTelephone (char* pStr)
-{
-    int i=0;
-    int contadorGuion=0;
-    while(pStr[i]!='\0')
-    {
-        if((pStr[i]!=' ')&&(pStr[i]!='-')&&(pStr[i]<'0' || pStr[i]>'9'))
-        {
-            return 0;
-        }
-        if(pStr[i]=='-')
-        {
-            contadorGuion++;
-        }
-        i++;
-    }
-    if(contadorGuion==1)
-    {
-        return 1;
-    }
-    return 0;
-}
+
 /** \brief Valida dni
 * \param array de char
 * \return retorna 1 diciendo que no hay error
@@ -713,156 +874,3 @@ int isCuit (char* pStr)
     }
     return ret;
 }
-/** \brief Valida mail
-* \param array de char
-* \return retorna 1 diciendo que no hay error
-*/
-int isMail(char* pStr)
-{
-    int i;
-    int contadorArroba = 0;
-    int ret = 0;
-
-    while(pStr[i] != '\0')
-    {
-        if((pStr[i] != '.') && (pStr[i] != '-') && (pStr[i] != '_') &&
-                (pStr[i] < '0' || pStr[i] > '9') && (pStr[i] < 'a' || pStr[i] > 'z') && (pStr[i] < 'A' || pStr[i] > 'Z'))
-        {
-            return ret;
-        }
-        if(pStr[0] == '.' || pStr[i-1] == '.')
-        {
-            return ret;
-        }
-        if(pStr[i] == '@')
-        {
-            contadorArroba++;
-        }
-        i++;
-    }
-    if(contadorArroba == 1)
-    {
-        ret = 1;
-    }
-    return ret;
-}
-/** \brief Obtiene un array de string
-* \param array de string
-* \param algun mensaje que se quiera expresar
-* \param msgE mensajes de error de las funciones
-* \param cantidad de reintentos antes de fallar
-* \return retorna 0 diciendo que no hay error o -1 si lo hay
-*/
-int getMail (char* pStr, char* msg, char* msgE,int reintentos)
-{
-    char bufferStr[20];
-    int ret = -1;
-    while(ret == -1 && reintentos > 0)
-    {
-        if(!getString(bufferStr,msg,msgE)&&(pStr!=NULL)&&(isMail(bufferStr)))
-        {
-            strncpy(pStr,bufferStr,20);
-            ret = 0;
-        }
-        else
-        {
-            printf("%s",msgE);
-            reintentos--;
-        }
-    }
-    return ret;
-}
-/** \brief Valida fecha
-* \param variable entera
-* \param variable entera
-* \param variable entera
-* \return retorna 1 diciendo que no hay error
-*/
-int isFecha(int dia,int mes,int anio)
-{
-    int ret = 0;
-
-    if((anio < 1900 || anio > 2030) &&
-            (mes < 1 || mes > 12) &&
-            (dia < 1 || dia > 31))
-    {
-        ret = 0;
-    }
-    switch(mes)
-    {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-    case 12:
-    {
-        if(dia < 1 || dia > 31)
-        {
-            ret = 1;
-        }
-        break;
-    }
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-    {
-        if(dia < 1 || dia > 30)
-        {
-            ret = 1;
-        }
-        break;
-    }
-    case 2:
-    {
-        if(dia < 1 || dia > 29)
-        {
-            ret = 1;
-        }
-        break;
-    }
-    }
-    return ret;
-}
-/** \brief Obtiene un array de string
-* \param puntero entero
-* \param puntero entero
-* \param puntero entero
-* \param msgE mensajes de error de las funciones
-* \param cantidad de reintentos antes de fallar
-* \return retorna 0 diciendo que no hay error o -1 si lo hay
-*/
-int getFecha (int* dia,int* mes,int* anio,char* msgE,int reintentos)
-{
-    int auxiliarDia;
-    int auxiliarMes;
-    int auxiliarAnio;
-    int ret = -1;
-
-    if(dia != NULL && mes != NULL && anio != NULL && reintentos > 0)
-    {
-        while(ret == -1)
-        {
-            if((getInt(&auxiliarDia,"Ingrese dia: ",msgE)==0)&&
-                    (getInt(&auxiliarMes,"Ingrese mes: ",msgE)==0)&&
-                    (getInt(&auxiliarAnio,"Ingrese anio: ",msgE)==0)&&
-                    (isFecha(auxiliarDia,auxiliarMes,auxiliarAnio)))
-            {
-                *dia = auxiliarDia;
-                *mes = auxiliarMes;
-                *anio = auxiliarAnio;
-                ret = 0;
-            }
-            else
-            {
-                printf(msgE);
-                ret = -1;
-                reintentos--;
-            }
-        }
-    }
-    return ret;
-}
-

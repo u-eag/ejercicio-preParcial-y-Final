@@ -7,10 +7,11 @@
 #include "Prestamos.h"
 #include "Socios.h"
 #include "validaciones.h"
+#include "InformarListar.h"
 
 #define TAM_SOC 5 // cantidad máxima de socios de la biblioteca
             // 1000
-#define TAM_PREST 1 // cantidad máxima de prestamos de la biblioteca
+#define TAM_PREST 5 // cantidad máxima de prestamos de la biblioteca
             // 1000
 
 int main()
@@ -72,9 +73,10 @@ int main()
                 "E. Listar libros\n"
                 "F. Listar autores\n"
                 "G. Prestamos\n"
-                "H. Salir\n\n");
+                "H. Informar y Listar\n"
+                "I. Salir\n\n");
 
-        getChar(&botonMenu, "Seleccione una opcion del menu: ", "\nOpcion no valida\n\n", 'A', 'H', 1, 1);
+        getChar(&botonMenu, "Seleccione una opcion del menu: ", "\nOpcion no valida\n\n", 'A', 'I', 1, 1);
 
         switch(botonMenu)
         {
@@ -147,9 +149,21 @@ int main()
                 }
                 system("pause");
                 break;
+
+            case 'H': // Informar y Listar
+                if(flagBotonAlta)
+                {
+                    informarListar(arrayPrestamos, TAM_PREST, arrayLibros, 10, arraySocios, TAM_SOC);
+                }
+                else
+                {
+                    printf("\nAntes de informar o listar se debe dar aunque sea un alta de socio\n\n");
+                }
+                system("pause");
+                break;
         }
 
-    }while(botonMenu != 'H');
+    }while(botonMenu != 'I');
 
     return 0;
 }
