@@ -6,6 +6,13 @@
 #include "Ventas.h"
 #include "LinkedList.h"
 
+static int idVenta = 0;
+
+int generarIdVenta (void)
+{
+    return idVenta++;
+}
+
 /** \brief
  *
  * \param

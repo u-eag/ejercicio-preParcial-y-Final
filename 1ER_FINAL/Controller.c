@@ -98,6 +98,45 @@ int controller_addClientes(LinkedList* pArrayListClientes)
     return retorno;
 }
 
+/** \brief Alta de ventas
+ *
+ * \param path char*
+ * \param pArrayListVentas LinkedList*
+ * \return int
+ *
+ */
+int controller_addVentas(LinkedList* pArrayListVentas, LinkedList* pArrayListClientes)
+{
+    int retorno = 1;
+    Ventas* pVenta;
+    Clientes* pClientes = pArrayListClientes;
+    char bufferIdVenta[4096]; // lo genero yo, único para cada venta
+    char bufferIdCliente[4096];
+    char bufferCodProducto[4096];
+    char bufferCantidad[4096];
+    char bufferPrecioUnitario[4096]; // lo saco de ventas.txt?
+
+    if (pArrayListVentas != NULL && pArrayListClientes != NULL)
+    {
+        if(!getStringNumerosInt(bufferIdCliente, "\nIngrese el ID del cliente: ", "\nIngreso invalido\n", 2)
+           && !getStringNumerosInt(bufferCodProducto, "\nIngrese el codigo del producto: ", "\nIngreso invalido\n", 2)
+           && !getStringNumerosInt(bufferCantidad, "\nIngrese la cantidad comprada: ", "\nIngreso invalido\n", 2))
+        {
+            pVenta = venta_newParametros(bufferIdVenta, bufferIdCliente, bufferCodProducto, bufferCantidad, bufferPrecioUnitario);
+
+            if(pVenta != NULL)
+            {
+                if(!ll_add(pArrayListVentas, pVenta))
+                {
+                    retorno = 0;
+                }
+            }
+        }
+    }
+
+    return retorno;
+}
+
 /** \brief Modificar datos del cliente
  *
  * \param path char*

@@ -6,6 +6,13 @@
 #include "Ventas.h"
 #include "LinkedList.h"
 
+static int idCliente = 0;
+
+int generarIdCliente (void)
+{
+    return idCliente++;
+}
+
 /** \brief
  *
  * \param

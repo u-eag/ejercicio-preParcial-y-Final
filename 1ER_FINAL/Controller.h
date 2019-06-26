@@ -10,6 +10,7 @@ int controller_loadClientesFromText(char* path , LinkedList* pArrayListClientes)
 int controller_loadVentasFromText(char* path , LinkedList* pArrayListVentas);
 
 int controller_addClientes(LinkedList* pArrayListClientes);
+int controller_addVentas(LinkedList* pArrayListVentas, LinkedList* pArrayListClientes);
 
 
 int controller_editClientes(LinkedList* pArrayListClientes);

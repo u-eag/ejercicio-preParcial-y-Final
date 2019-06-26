@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1561532430 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\validaciones.c
+1561534958 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\validaciones.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -75,7 +75,7 @@
 	"parser.h"
 	"LinkedList.h"
 
-1561534805 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\controller.c
+1561537217 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
