@@ -1,0 +1,86 @@
+# depslib dependency file v1.0
+1561532430 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+
+1561534958 c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\validaciones.h
+
+1561534554 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\clientes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Clientes.h"
+	"Ventas.h"
+	"LinkedList.h"
+
+1561534510 c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\clientes.h
+	<stdio.h>
+	<stdlib.h>
+	"validaciones.h"
+	"parser.h"
+
+1561534139 c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\parser.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Clientes.h"
+	"Ventas.h"
+	"LinkedList.h"
+
+1561526442 c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\ventas.h
+	<stdio.h>
+	<stdlib.h>
+	"validaciones.h"
+	"Clientes.h"
+	"parser.h"
+
+1560993796 c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\linkedlist.h
+
+1561515515 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Clientes.h"
+	"Ventas.h"
+	"LinkedList.h"
+
+1561513517 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\main.c
+	<stdio.h>
+	<stdlib.h>
+	"validaciones.h"
+	"Clientes.h"
+	"Ventas.h"
+
+1561526938 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\ventas.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Clientes.h"
+	"Ventas.h"
+	"LinkedList.h"
+
+1561526734 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Clientes.h"
+	"Ventas.h"
+	"parser.h"
+	"LinkedList.h"
+
+1561534805 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\1er_final\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Clientes.h"
+	"Ventas.h"
+	"LinkedList.h"
+
