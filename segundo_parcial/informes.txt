@@ -1,0 +1,9 @@
+*******************
+Informe de ventas
+*******************
+- Cantidad total de entregas: 1000
+- Cantidad de entregas por tipo: 318 (STD) 295 (EXP) 387 (ECO)
+- Cantidad maxima de bultos entregados: 100
+- Promedio de bultos por entrega: 51.37
+- Promedio de peso por entrega: 482.09
+*******************

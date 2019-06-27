@@ -1,0 +1,72 @@
+# depslib dependency file v1.0
+1561534882 source:c:\users\tomas\desktop\segundo_parcial\segundo_parcial\arraynuevo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arraynuevo.h"
+
+1561587503 c:\users\tomas\desktop\segundo_parcial\segundo_parcial\arraynuevo.h
+
+1561620629 source:c:\users\tomas\desktop\segundo_parcial\segundo_parcial\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1561620685 c:\users\tomas\desktop\segundo_parcial\segundo_parcial\linkedlist.h
+
+1561617417 source:c:\users\tomas\desktop\segundo_parcial\segundo_parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"arraynuevo.h"
+	"informes.h"
+	"controller.h"
+	"entregas.h"
+	"parser.h"
+	"LinkedList.h"
+
+1561587599 source:c:\users\tomas\desktop\segundo_parcial\segundo_parcial\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"entregas.h"
+	"arraynuevo.h"
+
+1561620612 c:\users\tomas\desktop\segundo_parcial\segundo_parcial\entregas.h
+
+1561593478 source:c:\users\tomas\desktop\segundo_parcial\segundo_parcial\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"entregas.h"
+	"Controller.h"
+	"parser.h"
+	"arraynuevo.h"
+
+1561593243 c:\users\tomas\desktop\segundo_parcial\segundo_parcial\controller.h
+	"LinkedList.h"
+
+1561590451 c:\users\tomas\desktop\segundo_parcial\segundo_parcial\parser.h
+
+1561621339 source:c:\users\tomas\desktop\segundo_parcial\segundo_parcial\entregas.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arraynuevo.h"
+	"entregas.h"
+
+1561620989 source:c:\users\tomas\desktop\segundo_parcial\segundo_parcial\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"arraynuevo.h"
+	"informes.h"
+	"controller.h"
+	"entregas.h"
+	"parser.h"
+
+1561620054 c:\users\tomas\desktop\segundo_parcial\segundo_parcial\informes.h
+	"LinkedList.h"
+
