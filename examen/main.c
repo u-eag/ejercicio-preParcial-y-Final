@@ -8,7 +8,7 @@
 #include "informes.h"
 
 int generarArchivoInformes(char* fileName, LinkedList* listaEntregas,   int cantidadEntregasTotales,
-                                                                        int cantidadEntregasPorTipo,
+                                                                        int cantidadEntregasSTD,
                                                                         int cantidadMaximaBultos,
                                                                         int promedioBultosPorEntrega,
                                                                         int pesoPromedioPorEntrega);
@@ -17,7 +17,9 @@ int main()
 {
     LinkedList* listaEntregas = ll_newLinkedList(); // Crear lista entregas
     int cantidadEntregasTotales;
-    int cantidadEntregasPorTipo; // STD:318 - EXP:295 - ECO:387
+    int cantidadEntregasSTD; // STD:318 - EXP:295 - ECO:387
+    int cantidadEntregasEXP;
+    int cantidadEntregasECO;
     int cantidadMaximaBultos;
     int promedioBultosPorEntrega;
     int pesoPromedioPorEntrega;
@@ -28,18 +30,23 @@ int main()
         // Cantidad total de entregas
         cantidadEntregasTotales = ii_cantidadTotal(listaEntregas);
 
-        // Cantidad de entregas por tipo
-        //cantidadEntregasPorTipo = ii_cantidadEntregaTipo(listaEntregas);
+        // Cantidad de entregas por tipo: [1]STD [2]EXP [3]ECO
+        cantidadEntregasSTD = ii_cantidadEntregaTipo(listaEntregas, 1);
+        cantidadEntregasEXP = ii_cantidadEntregaTipo(listaEntregas, 2);
+        cantidadEntregasECO = ii_cantidadEntregaTipo(listaEntregas, 3);
 
         // Cantidad maxima de bultos entregados
+        cantidadMaximaBultos = ii_cantidadMaximaBultos(listaEntregas);
 
         // Promedio de bultos por entrega
+        promedioBultosPorEntrega = ii_promedioBultos(listaEntregas);
 
         // Peso promedio por entrega
+        pesoPromedioPorEntrega = ii_pesoPromedio(listaEntregas);
 
         // Generar archivo de salida
         if(generarArchivoInformes("informes.txt", listaEntregas,    cantidadEntregasTotales,
-                                                                    cantidadEntregasPorTipo,
+                                                                    cantidadEntregasSTD,
                                                                     cantidadMaximaBultos,
                                                                     promedioBultosPorEntrega,
                                                                     pesoPromedioPorEntrega)==1)
@@ -56,7 +63,7 @@ int main()
 }
 
 int generarArchivoInformes(char* fileName, LinkedList* listaEntregas,   int cantidadEntregasTotales,
-                                                                        int cantidadEntregasPorTipo,
+                                                                        int cantidadEntregasSTD,
                                                                         int cantidadMaximaBultos,
                                                                         int promedioBultosPorEntrega,
                                                                         int pesoPromedioPorEntrega)
@@ -69,24 +76,17 @@ int generarArchivoInformes(char* fileName, LinkedList* listaEntregas,   int cant
 
     if(listaEntregas != NULL && pFile != NULL)
     {
-        for (i=0;i<ll_len(listaEntregas);i++)
-        {
-            pEntrega = ll_get(listaEntregas, i);
-
-            if(pEntrega != NULL)
-            {
-                fprintf(pFile, "Cantidad total de entregas: %d\n"
+        fprintf(pFile, "Cantidad total de entregas: %d\n"
                        "Cantidad de entregas por tipo: %d (STD) - XX (EXP) - XX (ECO)\n" // cambiar XX por %
                        "Cantidad maxima de bultos entregados: %d\n"
                        "Promedio de bultos por entrega: %d\n"
                        "Peso promedio por entrega: %d\n",
                         cantidadEntregasTotales,
-                        cantidadEntregasPorTipo,
+                        cantidadEntregasSTD,
                         cantidadMaximaBultos,
                         promedioBultosPorEntrega,
                         pesoPromedioPorEntrega);
-            }
-        }
+
 
         fclose(pFile);
 

@@ -20,17 +20,14 @@ int ii_cantidadTotal(LinkedList* this)
     return retorno;
 }
 
-// Cantidad de entregas por tipo
-/*int ii_cantidadEntregaTipo(LinkedList* this)
+// Cantidad de entregas por tipo: [1]STD [2]EXP [3]ECO
+int ii_cantidadEntregaTipo(LinkedList* this, int tipo)
 {
-    int retorno;
-    Entrega pEntrega;
-    int acumuladorSTD = 0;
-    int acumuladorEXP = 0;
-    int acumuladorECO = 0;
+    int retorno = -1;
+    Entrega* pEntrega;
     int i;
 
-    if(this != NULL)
+    if(this != NULL && tipo >= 1 && tipo >= 3)
     {
         for(i=0;i<ll_len(this);i++)
         {
@@ -38,33 +35,48 @@ int ii_cantidadTotal(LinkedList* this)
 
             if(pEntrega != NULL)
             {
-                if(strcmp(pEntrega->tipo, STD) == 0)
+                if(tipo == 1)
                 {
-                    acumuladorSTD++;
+                    retorno = ll_contar(this, entrega_contarSTD);
                 }
-                else if(strcmp(pEntrega->tipo, EXP) == 0)
+                else if(tipo == 2)
                 {
-                    acumuladorEXP++;
+                    retorno = ll_contar(this, entrega_contarEXP);
                 }
-                else
+                else // tipo 3
                 {
-                    acumuladorECO++;
+                    retorno = ll_contar(this, entrega_contarECO);
                 }
             }
         }
     }
 
     return retorno;
-}*/
+}
 
 // Cantidad maxima de bultos entregados
 int ii_cantidadMaximaBultos(LinkedList* this)
 {
-    int retorno;
+    int retorno = -1;
+    int i;
+    Entrega* pEntrega;
+    int auxMaximo = 0;
 
     if(this != NULL)
     {
         retorno = 0;
+
+        for(i=0;i<ll_len(this);i++)
+        {
+            pEntrega = ll_get(this,i);
+
+            if(pEntrega != NULL && pEntrega->cantidad > auxMaximo)
+            {
+                auxMaximo = pEntrega->cantidad;
+            }
+        }
+
+        retorno = auxMaximo;
     }
 
     return retorno;
@@ -73,25 +85,53 @@ int ii_cantidadMaximaBultos(LinkedList* this)
 // Promedio de bultos por entrega
 int ii_promedioBultos(LinkedList* this)
 {
-    int retorno;
+    int retorno = -1;
+    int i;
+    Entrega* pEntrega;
+    int cantidadTotal = 0;
+    float promedio;
 
     if(this != NULL)
     {
         retorno = 0;
-    }
 
+        for(i=0;i<ll_len(this);i++)
+        {
+            pEntrega = ll_get(this,i);
+
+            if(pEntrega != NULL && pEntrega->cantidad )
+            {
+                cantidadTotal += ll_contar(this, entrega_contarCantidad);
+            }
+        }
+        retorno = cantidadTotal;
+    }
     return retorno;
 }
 
 // Peso promedio por entrega
 int ii_pesoPromedio(LinkedList* this)
 {
-    int retorno;
+    int retorno = -1;
+    int i;
+    Entrega* pEntrega;
+    float cantidadTotal = 0;
+    //float promedio;
 
     if(this != NULL)
     {
         retorno = 0;
-    }
 
+        for(i=0;i<ll_len(this);i++)
+        {
+            pEntrega = ll_get(this,i);
+
+            if(pEntrega != NULL && pEntrega->peso >= 0)
+            {
+                cantidadTotal += ll_contarFloat(this,entrega_contarPeso);
+            }
+        }
+        retorno = cantidadTotal;
+    }
     return retorno;
 }

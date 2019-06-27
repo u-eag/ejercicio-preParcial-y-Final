@@ -752,3 +752,38 @@ LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*))
 
     return returnAux;
 }
+
+
+int ll_contar(LinkedList* this,int (*pFunc)(void*))
+{
+    int retorno = -1;
+    int i;
+
+    if(this != NULL && pFunc != NULL)
+    {
+        retorno = 0;
+
+        for(i=0;i<ll_len(this);i++)
+        {
+            retorno += pFunc(ll_get(this, i)); // pFunc devuelve 1 cuando hay que contar
+        }
+    }
+    return retorno;
+}
+
+int ll_contarFloat(LinkedList* this,int (*pFunc)(void*))
+{
+    float retorno = -1;
+    int i;
+
+    if(this != NULL && pFunc != NULL)
+    {
+        retorno = 0;
+
+        for(i=0; i<ll_len(this); i++)
+        {
+            retorno += pFunc(ll_get(this,i));
+        }
+    }
+    return retorno;
+}

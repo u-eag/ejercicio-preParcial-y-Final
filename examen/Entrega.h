@@ -26,4 +26,11 @@ int entrega_getCantidad(Entrega* this, int* value);
 int entrega_setPeso(Entrega* this, char* value);
 int entrega_getPeso(Entrega* this, float* value);
 
+int entrega_contarSTD(void* this);
+int entrega_contarEXP(void* this);
+int entrega_contarECO(void* this);
+
+int entrega_contarCantidad(void* this);
+int entrega_contarPeso(void* this);
+
 #endif // ENTREGA_H_INCLUDED

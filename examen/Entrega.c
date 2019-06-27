@@ -159,3 +159,96 @@ int entrega_getPeso(Entrega* this, float* value)
     }
     return retorno;
 }
+
+int entrega_contarSTD(void* this)
+{
+    int retorno = 0; // [0]si F [1] si V
+    Entrega* pEntrega;
+
+    if(this != NULL)
+    {
+        pEntrega = (Entrega*) this;
+
+        if(pEntrega != NULL)
+        {
+            if(strcmp(pEntrega->tipo, "STD") == 0)
+            {
+                retorno = 1; // para que ll_contar pueda contarla
+            }
+        }
+    }
+
+    return retorno;
+}
+
+int entrega_contarEXP(void* this)
+{
+    int retorno = 0; // [0]si F [1] si V
+    Entrega* pEntrega;
+
+    if(this != NULL)
+    {
+        pEntrega = (Entrega*) this;
+
+        if(pEntrega != NULL)
+        {
+            if(strcmp(pEntrega->tipo, "EXP") == 0)
+            {
+                retorno = 1; // para que ll_contar pueda contarla
+            }
+        }
+    }
+
+    return retorno;
+}
+
+int entrega_contarECO(void* this)
+{
+    int retorno = 0; // [0]si F [1] si V
+    Entrega* pEntrega;
+
+    if(this != NULL)
+    {
+        pEntrega = (Entrega*) this;
+
+        if(pEntrega != NULL)
+        {
+            if(strcmp(pEntrega->tipo, "ECO") == 0)
+            {
+                retorno = 1; // para que ll_contar pueda contarla
+            }
+        }
+    }
+
+    return retorno;
+}
+
+int entrega_contarCantidad(void* this)
+{
+    int retorno = 0;
+    Entrega* pEntrega;
+
+    pEntrega = (Entrega*) this;
+
+    if(pEntrega != NULL && pEntrega->cantidad >= 0)
+    {
+        retorno = pEntrega->cantidad;
+    }
+
+    return retorno;
+}
+
+int entrega_contarPeso(void* this)
+{
+    int retorno = 0;
+    Entrega* pEntrega;
+
+    pEntrega = (Entrega*) this;
+
+    if(pEntrega != NULL && pEntrega->peso >= 0)
+    {
+        retorno = pEntrega->peso;
+    }
+
+    return retorno;
+}

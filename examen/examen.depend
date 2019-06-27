@@ -79,3 +79,83 @@
 	"LinkedList.h"
 	"informes.h"
 
+1561668346 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+	"informes.h"
+
+1561598241 c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\validaciones.h
+
+1561598241 c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\parser.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Entrega.h"
+	"LinkedList.h"
+
+1561667127 c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\entrega.h
+
+1561668169 c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\linkedlist.h
+
+1561666482 c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\informes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+
+1561598241 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+	"informes.h"
+
+1561598241 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+	"informes.h"
+
+1561667989 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"informes.h"
+
+1561667127 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\entrega.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+	"informes.h"
+
+1561667815 source:c:\users\admiral\documents\tp4 + ejercicios parcial2\examen\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+	"informes.h"
+

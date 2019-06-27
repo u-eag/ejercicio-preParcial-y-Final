@@ -56,3 +56,6 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
 int ll_map(LinkedList* this, int (*pFunc)(void*)); // un mapeo
 int ll_reduce(LinkedList* this, int (*pFunc)(void*)); // un criterio para reducir la lista
 LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*)); // un criterio para crear una lista nueva
+
+int ll_contar(LinkedList* this,int (*pFunc)(void*));
+int ll_contarFloat(LinkedList* this,int (*pFunc)(void*));
