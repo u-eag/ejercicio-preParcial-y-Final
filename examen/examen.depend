@@ -1,0 +1,81 @@
+# depslib dependency file v1.0
+1561590483 source:d:\ejercicio-preparcial-y-final-master\examen\entrega.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+	"informes.h"
+
+1561588450 d:\ejercicio-preparcial-y-final-master\examen\validaciones.h
+
+1561586719 d:\ejercicio-preparcial-y-final-master\examen\parser.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Entrega.h"
+	"LinkedList.h"
+
+1561588815 d:\ejercicio-preparcial-y-final-master\examen\entrega.h
+
+1561590483 d:\ejercicio-preparcial-y-final-master\examen\linkedlist.h
+
+1561590483 source:d:\ejercicio-preparcial-y-final-master\examen\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"informes.h"
+
+1561597941 source:d:\ejercicio-preparcial-y-final-master\examen\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+	"informes.h"
+
+1561590483 source:d:\ejercicio-preparcial-y-final-master\examen\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+	"informes.h"
+
+1561590483 source:d:\ejercicio-preparcial-y-final-master\examen\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+	"informes.h"
+
+1561592701 d:\ejercicio-preparcial-y-final-master\examen\informes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+
+1561597778 source:d:\ejercicio-preparcial-y-final-master\examen\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"Entrega.h"
+	"LinkedList.h"
+	"informes.h"
+
