@@ -1,0 +1,107 @@
+# depslib dependency file v1.0
+1561671119 source:d:\ejercicio-preparcial-y-final-master\examen real\examen real\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"LinkedList.h"
+	"informes.h"
+	"Venta.h"
+	"Fecha.h"
+
+1561671428 d:\ejercicio-preparcial-y-final-master\examen real\examen real\validaciones.h
+
+1561679250 d:\ejercicio-preparcial-y-final-master\examen real\examen real\parser.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"LinkedList.h"
+
+1561668758 d:\ejercicio-preparcial-y-final-master\examen real\examen real\linkedlist.h
+
+1561680198 d:\ejercicio-preparcial-y-final-master\examen real\examen real\informes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"LinkedList.h"
+
+1561680504 d:\ejercicio-preparcial-y-final-master\examen real\examen real\venta.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"LinkedList.h"
+	"informes.h"
+	"Venta.h"
+	"Fecha.h"
+
+1561668758 d:\ejercicio-preparcial-y-final-master\examen real\examen real\fecha.h
+
+1561681714 source:d:\ejercicio-preparcial-y-final-master\examen real\examen real\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Venta.h"
+	"Fecha.h"
+
+1561681427 source:d:\ejercicio-preparcial-y-final-master\examen real\examen real\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"LinkedList.h"
+	"informes.h"
+	"Venta.h"
+	"Fecha.h"
+
+1561683513 source:d:\ejercicio-preparcial-y-final-master\examen real\examen real\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"LinkedList.h"
+	"informes.h"
+	"Venta.h"
+	"Fecha.h"
+
+1561682116 source:d:\ejercicio-preparcial-y-final-master\examen real\examen real\parser.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"LinkedList.h"
+	"informes.h"
+	"Venta.h"
+	"Fecha.h"
+
+1561671428 source:d:\ejercicio-preparcial-y-final-master\examen real\examen real\validaciones.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"LinkedList.h"
+	"informes.h"
+	"Venta.h"
+	"Fecha.h"
+
+1561683697 source:d:\ejercicio-preparcial-y-final-master\examen real\examen real\venta.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validaciones.h"
+	"Parser.h"
+	"LinkedList.h"
+	"informes.h"
+	"Venta.h"
+	"Fecha.h"
+
