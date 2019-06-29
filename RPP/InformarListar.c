@@ -107,6 +107,8 @@ int calcularPrestamos (Prestamos* listPrestamos, int lenPrestamos, float* promed
     int result = -1;
     int i;
     int acumuladorPrestamos = 0; // total general de prestamos
+    int j;
+    Fecha fechaAux;
     int contadorDias = 0;
 
     if(listPrestamos != NULL && lenPrestamos > 0)
@@ -119,7 +121,21 @@ int calcularPrestamos (Prestamos* listPrestamos, int lenPrestamos, float* promed
             if(listPrestamos[i].isEmpty == 0)
             {
                 acumuladorPrestamos++;
-                contadorDias++;
+                contadorDias++; // lo cuento
+
+                // descarto los dias que se repiten:
+                fechaAux = listPrestamos[i].fechaPrestamo;
+                for(j=0;j<lenPrestamos;j++)
+                {
+                    contadorDias++; // lo cuento de nuevo
+
+                    if( listPrestamos[j].fechaPrestamo.dia == fechaAux.dia
+                        && listPrestamos[j].fechaPrestamo.mes == fechaAux.mes
+                        && listPrestamos[j].fechaPrestamo.anio == fechaAux.anio)
+                        {
+                            contadorDias--; // acá compenso la contada doble
+                        }
+                }
             }
         }
 
