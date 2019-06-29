@@ -13,6 +13,8 @@ int informarListar (Prestamos* listPrestamos, int lenPrestamos, Libros* listLibr
 {
     int result=-1; // devuelve [-1] si hay error y [0] si esta ok
     char botonInformarListar='Z';
+    float promedioPrestamosDiarios; // para guardar el dato del A
+    int flagBotonA = 0; // para saber si se calculó el promedio
 
         do{
             system("cls");
@@ -35,12 +37,18 @@ int informarListar (Prestamos* listPrestamos, int lenPrestamos, Libros* listLibr
             switch(botonInformarListar)
             {
                 case 'A': // Informar el Total general y Promedio diario de las solicitudes a prestamo de los libros
-                    calcularPrestamos(listPrestamos, lenPrestamos);
+                    if(!calcularPrestamos(listPrestamos, lenPrestamos, &promedioPrestamosDiarios))
+                    {
+                        flagBotonA = 1;
+                    }
                     system("pause");
                     break;
 
                 case 'B': // Informar la cantidad de dias cuya solicitud a prestamo NO superan el promedio del item anterior
-                    calcularDiasMenoresAlPromedio(listPrestamos, lenPrestamos);
+                    if(flagBotonA)
+                    {
+                        calcularDiasMenoresAlPromedio(listPrestamos, lenPrestamos, promedioPrestamosDiarios);
+                    }
                     system("pause");
                     break;
 
@@ -94,26 +102,75 @@ int informarListar (Prestamos* listPrestamos, int lenPrestamos, Libros* listLibr
 }
 
 // A. Informar el Total general y Promedio diario de las solicitudes a prestamo de los libros
-int calcularPrestamos (Prestamos* listPrestamos, int lenPrestamos)
+int calcularPrestamos (Prestamos* listPrestamos, int lenPrestamos, float* promedio)
 {
     int result = -1;
+    int i;
+    int acumuladorPrestamos = 0; // total general de prestamos
+    int contadorDias = 0;
 
     if(listPrestamos != NULL && lenPrestamos > 0)
     {
         result = 0;
+
+        // cuento los campos que no están vacíos
+        for(i=0;i<lenPrestamos;i++)
+        {
+            if(listPrestamos[i].isEmpty == 0)
+            {
+                acumuladorPrestamos++;
+                contadorDias++;
+            }
+        }
+
+        *promedio = (float)acumuladorPrestamos / contadorDias;
+
+        printf("El total general de prestamos es: %d\n"
+               "El promedio diario de las solicitudes a prestamos es: %.2f\n",
+               acumuladorPrestamos, (float)acumuladorPrestamos / contadorDias);
     }
 
     return result;
 }
 
 // B. Informar la cantidad de dias cuya solicitud a prestamo NO superan el promedio del item A
-int calcularDiasMenoresAlPromedio (Prestamos* listPrestamos, int lenPrestamos)
+int calcularDiasMenoresAlPromedio (Prestamos* listPrestamos, int lenPrestamos, float promedio)
 {
     int result = -1;
+    int i;
+    int j;
+    Fecha fechaAux;
+    int prestamosPorDia = 0; // acumulador
+    int diasDebajoDelPromedio = 0; // acumulador
 
     if(listPrestamos != NULL && lenPrestamos > 0)
     {
         result = 0;
+
+        for(i=0;i<lenPrestamos-1;i++)
+        {
+            fechaAux = listPrestamos[i].fechaPrestamo;
+
+            for(j=0;j<lenPrestamos;j++)
+            {
+                if(listPrestamos[i].isEmpty == 0
+                   && listPrestamos[j].isEmpty == 0
+                   && listPrestamos[j].fechaPrestamo.dia == fechaAux.dia
+                   && listPrestamos[j].fechaPrestamo.mes == fechaAux.mes
+                   && listPrestamos[j].fechaPrestamo.anio == fechaAux.anio)
+                {
+                    prestamosPorDia++;
+                }
+            }
+
+            if((float)prestamosPorDia < promedio)
+            {
+                diasDebajoDelPromedio++;
+            }
+        }
+
+        printf("La cantida de dias cuya solicitud a prestamo NO superan el promedio es: %d",
+               diasDebajoDelPromedio);
     }
 
     return result;
@@ -191,10 +248,37 @@ int unSocioMuchosLibros (Prestamos* listPrestamos, int lenPrestamos, Libros* lis
 int listarLibrosMenosSolicitados (Prestamos* listPrestamos, int lenPrestamos)
 {
     int result = -1;
+    int i;
+    int j;
+    int libro;
+    int cantidadPrestamos;
+    int minimo = 100000000; // exagero poniendo un número de préstamos muy alto
+    int libroMenosSolicitado;
 
     if(listPrestamos != NULL && lenPrestamos > 0)
     {
         result = 0;
+
+        // me paro en el primer idLibro y me fijo cuantas veces fue prestado
+        for(i=0;i<lenPrestamos;i++)
+        {
+            libro = listPrestamos[i].idLibro;
+
+            for(j=0;j<lenPrestamos;j++)
+            {
+                if(listPrestamos[j].idLibro == libro)
+                {
+                    cantidadPrestamos++;
+                }
+            }
+
+            if(cantidadPrestamos < minimo)
+            {
+                libroMenosSolicitado = libro;
+            }
+        }
+
+        printf("El libro menos solicitado es el ID: %d", libroMenosSolicitado);
     }
 
     return result;
@@ -204,10 +288,36 @@ int listarLibrosMenosSolicitados (Prestamos* listPrestamos, int lenPrestamos)
 int listarSociosMasActivos (Prestamos* listPrestamos, int lenPrestamos)
 {
     int result = -1;
+    int i;
+    int j;
+    int socio;
+    int cantidadPrestamos = 0;
+    int maximo = 0;
+    int idSocioMasActivo;
 
     if(listPrestamos != NULL && lenPrestamos > 0)
     {
         result = 0;
+
+        for(i=0;i<lenPrestamos;i++)
+        {
+            socio = listPrestamos[i].idSocio;
+
+            for(j=0;j<lenPrestamos;j++)
+            {
+                if(listPrestamos[j].idSocio == socio)
+                {
+                    cantidadPrestamos++;
+                }
+            }
+
+            if(cantidadPrestamos > maximo)
+            {
+                idSocioMasActivo = socio;
+            }
+        }
+
+        printf("El socio más activo es el ID: %d", idSocioMasActivo);
     }
 
     return result;
@@ -359,10 +469,29 @@ int unaFechaMuchosSocios(Prestamos* listPrestamos, int lenPrestamos, Socios* lis
 int listarLibrosPorTitulo (Libros* arrayLibros, int lenLibros)
 {
     int result = -1;
+    int i;
+    int j;
+    Libros aux;
 
     if(arrayLibros != NULL && lenLibros > 0)
     {
         result = 0;
+
+        for(i=0;i<lenLibros-1;i++)
+        {
+            for(j=i+1;j<lenLibros;j++)
+            {
+                if(strcmp(arrayLibros[i].titulo,arrayLibros[j].titulo) < 0)
+                // si el primero es menor hago el swap
+                {
+                    aux = arrayLibros[i];
+                    arrayLibros[i] = arrayLibros[j];
+                    arrayLibros[j] = aux;
+                }
+            }
+        }
+
+        printLibros(arrayLibros, lenLibros);
     }
 
     return result;
@@ -376,6 +505,9 @@ int listarSociosPorApellido(Socios* arraySocios, int lenSocios)
     if(arraySocios != NULL && lenSocios > 0)
     {
         result = 0;
+
+        ordenarSocios(arraySocios, lenSocios);
+        printSocios(arraySocios, lenSocios);
     }
 
     return result;

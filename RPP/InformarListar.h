@@ -11,10 +11,10 @@
 int informarListar (Prestamos* listPrestamos, int lenPrestamos, Libros* listLibros, int lenLibros, Socios* listSocios, int lenSocios);
 
 // punto A.
-int calcularPrestamos (Prestamos* listPrestamos, int lenPrestamos);
+int calcularPrestamos (Prestamos* listPrestamos, int lenPrestamos, float* promedio);
 
 // punto B.
-int calcularDiasMenoresAlPromedio (Prestamos* listPrestamos, int lenPrestamos);
+int calcularDiasMenoresAlPromedio (Prestamos* listPrestamos, int lenPrestamos, float promedio);
 
 // punto C.
 int unLibroMuchosSocios (Prestamos* listPrestamos, int lenPrestamos, Libros* listLibros, int lenLibros, Socios* listSocios, int lenSocios);
